@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+// import Form from './components/Form';
+// import SignupForm from './components/SignupForm';
+// import SignupFormExercicio from './components/SignupFormExercicio';
+import React from 'react';
+import Container from '@mui/material/Container'
+// import MovieHeader from './components/MovieHeader';
+// import CreateMoviePage from './pages/CreateMoviePage';
+import CheckoutHeader from './components/CheckoutHeader';
+import CheckoutPage from './pages/CheckoutPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <MovieHeader /> */}
+      <CheckoutHeader />
+      <Container component="main" sx={{ textAlign: 'left' }} >
+        {/* <CreateMoviePage /> */}
+        <CheckoutPage />
+      </Container>
     </div>
   );
 }
