@@ -4,17 +4,22 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
 
 export default function MovieHeader() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
-            Movies
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
+        <Container component="div">
+          <Toolbar disableGutters>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
+              Movies
+            </Typography>
+            <Button component={Link} to="/listMovie" color="inherit">Listar</Button>
+            <Button component={Link} to="/movieCreate" color="inherit">Cadastrar</Button>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   )

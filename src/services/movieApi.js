@@ -8,3 +8,8 @@ export default async function createMovie(data) {
   const response = await api.post("/movies", data);
   return response;
 }
+
+export async function getMovies() {
+  const response = await api.get("/movies")
+  return response;
+}

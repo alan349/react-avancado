@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
 import checkout from '../services/checkoutApi';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -85,94 +86,96 @@ export default function CheckoutPage() {
   });
 
   return (
-    <Box component="form" sx={{ mt: 5 }} onSubmit={formik.handleSubmit}>
-      <Grid container spacing={2} sx={{ mt: 5 }}>
-        <Grid item sm={12} sx={{ borderBottom: 1, borderColor: 'grey.400', pb: 5 }}>
-          <Typography variant="h4">
-            Dados de Entrega:
-          </Typography>
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            <Grid item sm={6}>
-              <TextField label="Nome" name="firstName" variant="outlined" fullWidth
-                value={formik.values.firstName} onChange={formik.handleChange}
-                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                helperText={formik.touched.firstName && formik.errors.firstName} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Sobrenome" name="lastName" variant="outlined" fullWidth
-                value={formik.values.lastName} onChange={formik.handleChange}
-                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                helperText={formik.touched.lastName && formik.errors.lastName} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="CPF" name="cpf" variant="outlined" fullWidth
-                value={formik.values.cpf} onChange={formik.handleChange}
-                error={formik.touched.cpf && Boolean(formik.errors.cpf)}
-                helperText={formik.touched.cpf && formik.errors.cpf} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Endereço" name="address" variant="outlined" fullWidth
-                value={formik.values.address} onChange={formik.handleChange}
-                error={formik.touched.address && Boolean(formik.errors.address)}
-                helperText={formik.touched.address && formik.errors.address} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Cidade" name="city" variant="outlined" fullWidth
-                value={formik.values.city} onChange={formik.handleChange}
-                error={formik.touched.city && Boolean(formik.errors.city)}
-                helperText={formik.touched.city && formik.errors.city} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Estado" name="state" variant="outlined" fullWidth
-                value={formik.values.state} onChange={formik.handleChange}
-                error={formik.touched.state && Boolean(formik.errors.state)}
-                helperText={formik.touched.state && formik.errors.state} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="CEP" name="postalcode" variant="outlined" fullWidth
-                value={formik.values.postalcode} onChange={formik.handleChange}
-                error={formik.touched.postalcode && Boolean(formik.errors.postalcode)}
-                helperText={formik.touched.postalcode && formik.errors.postalcode} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item sm={12}>
-          <Typography variant="h4">
-            Dados de Pagamento:
-          </Typography>
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            <Grid item sm={6}>
-              <TextField label="Nome" name="cardName" variant="outlined" fullWidth
-                value={formik.values.cardName} onChange={formik.handleChange}
-                error={formik.touched.cardName && Boolean(formik.errors.cardName)}
-                helperText={formik.touched.cardName && formik.errors.cardName} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Número do Cartão" name="cardNumber" variant="outlined" fullWidth
-                value={formik.values.cardNumber} onChange={formik.handleChange}
-                error={formik.touched.cardNumber && Boolean(formik.errors.cardNumber)}
-                helperText={formik.touched.cardNumber && formik.errors.cardNumber} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="Data de Expiração" name="cardExpirationDate" variant="outlined" fullWidth
-                value={formik.values.cardExpirationDate} onChange={formik.handleChange}
-                error={formik.touched.cardExpirationDate && Boolean(formik.errors.cardExpirationDate)}
-                helperText={formik.touched.cardExpirationDate && formik.errors.cardExpirationDate} />
-            </Grid>
-            <Grid item sm={6}>
-              <TextField label="CVV" name="cardCVV" variant="outlined" fullWidth
-                value={formik.values.cardCVV} onChange={formik.handleChange}
-                error={formik.touched.cardCVV && Boolean(formik.errors.cardCVV)}
-                helperText={formik.touched.cardCVV && formik.errors.cardCVV} />
+    <Container component="main" sx={{ textAlign: 'left' }} >
+      <Box component="form" sx={{ mt: 5 }} onSubmit={formik.handleSubmit}>
+        <Grid container spacing={2} sx={{ mt: 5 }}>
+          <Grid item sm={12} sx={{ borderBottom: 1, borderColor: 'grey.400', pb: 5 }}>
+            <Typography variant="h4">
+              Dados de Entrega:
+            </Typography>
+            <Grid container spacing={2} sx={{ mt: 2 }}>
+              <Grid item sm={6}>
+                <TextField label="Nome" name="firstName" variant="outlined" fullWidth
+                  value={formik.values.firstName} onChange={formik.handleChange}
+                  error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                  helperText={formik.touched.firstName && formik.errors.firstName} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Sobrenome" name="lastName" variant="outlined" fullWidth
+                  value={formik.values.lastName} onChange={formik.handleChange}
+                  error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                  helperText={formik.touched.lastName && formik.errors.lastName} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="CPF" name="cpf" variant="outlined" fullWidth
+                  value={formik.values.cpf} onChange={formik.handleChange}
+                  error={formik.touched.cpf && Boolean(formik.errors.cpf)}
+                  helperText={formik.touched.cpf && formik.errors.cpf} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Endereço" name="address" variant="outlined" fullWidth
+                  value={formik.values.address} onChange={formik.handleChange}
+                  error={formik.touched.address && Boolean(formik.errors.address)}
+                  helperText={formik.touched.address && formik.errors.address} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Cidade" name="city" variant="outlined" fullWidth
+                  value={formik.values.city} onChange={formik.handleChange}
+                  error={formik.touched.city && Boolean(formik.errors.city)}
+                  helperText={formik.touched.city && formik.errors.city} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Estado" name="state" variant="outlined" fullWidth
+                  value={formik.values.state} onChange={formik.handleChange}
+                  error={formik.touched.state && Boolean(formik.errors.state)}
+                  helperText={formik.touched.state && formik.errors.state} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="CEP" name="postalcode" variant="outlined" fullWidth
+                  value={formik.values.postalcode} onChange={formik.handleChange}
+                  error={formik.touched.postalcode && Boolean(formik.errors.postalcode)}
+                  helperText={formik.touched.postalcode && formik.errors.postalcode} />
+              </Grid>
             </Grid>
           </Grid>
+          <Grid item sm={12}>
+            <Typography variant="h4">
+              Dados de Pagamento:
+            </Typography>
+            <Grid container spacing={2} sx={{ mt: 2 }}>
+              <Grid item sm={6}>
+                <TextField label="Nome" name="cardName" variant="outlined" fullWidth
+                  value={formik.values.cardName} onChange={formik.handleChange}
+                  error={formik.touched.cardName && Boolean(formik.errors.cardName)}
+                  helperText={formik.touched.cardName && formik.errors.cardName} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Número do Cartão" name="cardNumber" variant="outlined" fullWidth
+                  value={formik.values.cardNumber} onChange={formik.handleChange}
+                  error={formik.touched.cardNumber && Boolean(formik.errors.cardNumber)}
+                  helperText={formik.touched.cardNumber && formik.errors.cardNumber} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="Data de Expiração" name="cardExpirationDate" variant="outlined" fullWidth
+                  value={formik.values.cardExpirationDate} onChange={formik.handleChange}
+                  error={formik.touched.cardExpirationDate && Boolean(formik.errors.cardExpirationDate)}
+                  helperText={formik.touched.cardExpirationDate && formik.errors.cardExpirationDate} />
+              </Grid>
+              <Grid item sm={6}>
+                <TextField label="CVV" name="cardCVV" variant="outlined" fullWidth
+                  value={formik.values.cardCVV} onChange={formik.handleChange}
+                  error={formik.touched.cardCVV && Boolean(formik.errors.cardCVV)}
+                  helperText={formik.touched.cardCVV && formik.errors.cardCVV} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item sm={12} sx={{ mt: 5 }}>
+            <Button type="submit" variant="contained" fullWidth>
+              Checkout
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item sm={12} sx={{ mt: 5 }}>
-          <Button type="submit" variant="contained" fullWidth>
-            Checkout
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </Container>
   )
 }

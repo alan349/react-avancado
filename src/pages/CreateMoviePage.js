@@ -3,6 +3,7 @@ import { useState } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
+import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import createMovie from '../services/movieApi';
@@ -35,32 +36,34 @@ export default function CreateMoviePage() {
   }
 
   return (
-    <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
-      <Typography variant="h4">
-        Novo Filme
-      </Typography>
-      <Grid container spacing={2} sx={{ mt: 5 }}>
-        <Grid item sm={12}>
-          <TextField label="Título" variant="outlined" fullWidth onChange={handleChange} value={fields.title} name="title" />
+    <Container component="main" sx={{ textAlign: 'left' }} >
+      <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
+        <Typography variant="h4">
+          Novo Filme
+        </Typography>
+        <Grid container spacing={2} sx={{ mt: 5 }}>
+          <Grid item sm={12}>
+            <TextField label="Título" variant="outlined" fullWidth onChange={handleChange} value={fields.title} name="title" />
+          </Grid>
+          <Grid item sm={6}>
+            <TextField label="Diretor" variant="outlined" fullWidth onChange={handleChange} value={fields.director} name="director" />
+          </Grid>
+          <Grid item sm={6}>
+            <TextField label="Roteiristas" variant="outlined" fullWidth onChange={handleChange} value={fields.writers} name="writers" />
+          </Grid>
+          <Grid item sm={6}>
+            <TextField label="Data de Lançamento" variant="outlined" fullWidth onChange={handleChange} value={fields.releaseDate} name="releaseDate" />
+          </Grid>
+          <Grid item sm={6}>
+            <TextField label="Tempo de Duração" variant="outlined" fullWidth onChange={handleChange} value={fields.timeDuration} name="timeDuration" />
+          </Grid>
+          <Grid item sm={12}>
+            <Button type="submit" variant="contained" fullWidth>
+              Cadastrar Filme
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item sm={6}>
-          <TextField label="Diretor" variant="outlined" fullWidth onChange={handleChange} value={fields.director} name="director" />
-        </Grid>
-        <Grid item sm={6}>
-          <TextField label="Roteiristas" variant="outlined" fullWidth onChange={handleChange} value={fields.writers} name="writers" />
-        </Grid>
-        <Grid item sm={6}>
-          <TextField label="Data de Lançamento" variant="outlined" fullWidth onChange={handleChange} value={fields.releaseDate} name="releaseDate" />
-        </Grid>
-        <Grid item sm={6}>
-          <TextField label="Tempo de Duração" variant="outlined" fullWidth onChange={handleChange} value={fields.timeDuration} name="timeDuration" />
-        </Grid>
-        <Grid item sm={12}>
-          <Button type="submit" variant="contained" fullWidth>
-            Cadastrar Filme
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </Container>
   )
 }
