@@ -36,7 +36,6 @@ export default function UpdateMoviePage() {
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await updateMovie(id, fields);
-    console.log(response);
     if (response.status === 200) {
       setFields(movie)
     }

@@ -35,12 +35,6 @@ export default function ListMoviePage() {
     setRows(data)
   }
 
-  const [selectionModel, setSelectionModel] = useState([]);
-
-  useEffect(() => {
-    console.log(selectionModel);
-  }, [selectionModel])
-
   return (
     <div>
       <MovieHeader />
@@ -50,12 +44,7 @@ export default function ListMoviePage() {
             Filmes
           </Typography>
           <div style={{ height: 600, width: '100%' }}>
-            <DataGrid rows={rows} columns={columns}
-              checkboxSelection
-              onSelectionModelChange={(newSelectionModel) => {
-                setSelectionModel(newSelectionModel);
-              }}
-              selectionModel={selectionModel} />
+            <DataGrid rows={rows} columns={columns} />
           </div>
         </Box>
       </Container>

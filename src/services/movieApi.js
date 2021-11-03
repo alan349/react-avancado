@@ -18,7 +18,6 @@ export default async function createMovie(data) {
 
 export async function getMovies() {
   const response = await api.get("/movies")
-  console.log(response);
   return response;
 }
 
