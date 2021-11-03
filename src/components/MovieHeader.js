@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 
 export default function MovieHeader() {
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -18,6 +19,8 @@ export default function MovieHeader() {
             </Typography>
             <Button component={Link} to="/listMovie" color="inherit">Listar</Button>
             <Button component={Link} to="/movieCreate" color="inherit">Cadastrar</Button>
+            <Button component={Link} to="/movieUpdate" color="inherit">Atualizar</Button>
+            <Button component={Link} to="/logout" color="inherit">Logout</Button>
           </Toolbar>
         </Container>
       </AppBar>
