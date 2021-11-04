@@ -31,12 +31,11 @@ export default function UpdateMoviePage() {
 
   useEffect(() => {
     getMovie()
-  }, []);
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await updateMovie(id, fields);
-    console.log(response);
     if (response.status === 200) {
       setFields(movie)
     }

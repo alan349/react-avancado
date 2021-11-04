@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button, Container, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 
-import { authenticate } from '../services/movieApi';
-import { isAuthenticated, login } from '../services/auth';
 import { useHistory } from 'react-router';
+import { AuthContext } from '../context/authContext';
 
 export default function LoginPage() {
 
   const [fields, setFields] = useState({ login: "", password: "" });
   const history = useHistory();
+  const context = useContext(AuthContext);
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    if (context.isAuthenticated) {
       history.push("/");
     }
-  }, [])
+  }, [context.isAuthenticated, history])
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const response = await authenticate(fields.login, fields.password);
-    if (response.status === 200 && response.data.auth === true) {
-      login(response.data.token);
+    if (await context.login(fields.login, fields.password)) {
+      history.push("/");
     }
-    history.push("/");
   }
 
   function handleChange(event) {

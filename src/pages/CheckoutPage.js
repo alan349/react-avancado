@@ -80,7 +80,6 @@ export default function CheckoutPage() {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       const response = await checkout(values);
-      console.log(response);
       if (response.status === 200 || response.status === 201) {
         alert('Checkout realizado com sucesso!');
       }

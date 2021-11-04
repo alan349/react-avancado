@@ -42,7 +42,6 @@ function SignupForm() {
       validationSchema={SignupSchema}
       onSubmit={(values) => {
         alert("Dados enviados");
-        console.log(values);
       }}
     >
       {({ values, touched, errors }) => (

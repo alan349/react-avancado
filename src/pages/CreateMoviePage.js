@@ -25,7 +25,6 @@ export default function CreateMoviePage() {
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await createMovie(fields);
-    console.log(response);
     if (response.status === 200) {
       setFields(movie)
     }

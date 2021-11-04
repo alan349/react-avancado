@@ -2,7 +2,7 @@ import './App.css';
 // import Form from './components/Form';
 // import SignupForm from './components/SignupForm';
 // import SignupFormExercicio from './components/SignupFormExercicio';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import CreateMoviePage from './pages/CreateMoviePage';
 import ListMoviePage from './pages/ListMoviePage';
@@ -10,13 +10,14 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 
 import CheckoutPage from './pages/CheckoutPage';
 import UpdateMoviePage from './pages/UpdateMoviePage';
-import { isAuthenticated } from './services/auth';
 import LoginPage from './pages/LoginPage';
 import { logout } from './services/auth';
+import { AuthContext } from './context/authContext';
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <BrowserRouter>
         <Switch>
           <Route path="/login">
@@ -52,7 +53,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 
@@ -64,9 +65,10 @@ function LogoutRoute() {
 }
 
 function PrivateRoute({ children, ...rest }) {
+  const context = useContext(AuthContext);
   return (
     <Route {...rest}>
-      {isAuthenticated() ? children : <Redirect to="/login" />}
+      {context.isAuthenticated ? children : <Redirect to="/login" />}
     </Route>
   )
 }

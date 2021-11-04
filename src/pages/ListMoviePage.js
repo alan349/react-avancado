@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { DataGrid } from '@mui/x-data-grid'
 import Container from '@mui/material/Container'
 
 import MovieHeader from '../components/MovieHeader';
-import { getMovies } from '../services/movieApi';
+import { getMovies, removeMovie } from '../services/movieApi';
 import MovieDeleteButton from '../components/MovieDeleteButton';
 
 const columns = [
@@ -20,6 +21,7 @@ const columns = [
 export default function ListMoviePage() {
 
   const [rows, setRows] = useState([]);
+  const [rowsSelected, setRowsSelected] = useState([]);
 
   useEffect(() => {
     getMoviesFromApi();
@@ -35,11 +37,13 @@ export default function ListMoviePage() {
     setRows(data)
   }
 
-  const [selectionModel, setSelectionModel] = useState([]);
-
-  useEffect(() => {
-    console.log(selectionModel);
-  }, [selectionModel])
+  function handleClickDelete() {
+    rowsSelected.forEach((rowId) => {
+      removeMovie(rowId).then(() => {
+        setRows((rows) => rows.filter((row) => row.id !== rowId));
+      });
+    })
+  }
 
   return (
     <div>
@@ -53,10 +57,13 @@ export default function ListMoviePage() {
             <DataGrid rows={rows} columns={columns}
               checkboxSelection
               onSelectionModelChange={(newSelectionModel) => {
-                setSelectionModel(newSelectionModel);
+                setRowsSelected(newSelectionModel);
               }}
-              selectionModel={selectionModel} />
+              rowsSelected={rowsSelected} />
           </div>
+          <Button onClick={handleClickDelete}>
+            Remover Item(s)
+          </Button>
         </Box>
       </Container>
     </div>
