@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Container, TextField, Typography, Box, Alert } from "@mui/material";
+
+import { AuthContext } from '../context/authContext';
 
 export default function LoginPage() {
 
     const [fields, setFields] = useState({ login: "", password: "" });
+    const context = useContext(AuthContext);
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if (await context.login(fields.login, fields.password)) {
+            alert("logged");
+        }
     }
 
     function handleChange(event) {
@@ -17,8 +23,8 @@ export default function LoginPage() {
 
     return (
         <Container maxWidth="xs" sx={{ display: "flex", flexDirection: "column", justifyContent: "center", mt: 5, textAlign: "center" }}>
-            <Typography variant="h4" sx={{ fontStyle: "italic" }}>
-                Trabalho React Avançado
+            <Typography variant="h5" sx={{ fontStyle: "italic", fontWeight: "bold" }}>
+                Projeto Final React Avançado
             </Typography>
             <Typography variant="h5" sx={{ mt: 5 }}>
                 Login
