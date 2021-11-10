@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <LoginPage />
+        </Route>
+
+        <PrivateRoute path="/motoristaList">
+        </PrivateRoute>
+        <PrivateRoute path="/motoristaAdd">
+        </PrivateRoute>
+        <PrivateRoute path="/motoristaUpdate/:id">
+        </PrivateRoute>
+        <PrivateRoute path="/motoristaVeiculos/:id">
+        </PrivateRoute>
+        <PrivateRoute path="/veiculoList">
+        </PrivateRoute>
+        <PrivateRoute path="/veiculoAdd">
+        </PrivateRoute>
+        <PrivateRoute path="/veiculoUpdate/:id">
+        </PrivateRoute>
+
+        <Route>
+          404
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
