@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
+      <Routes>
         <Route exact path="/">
-          <LoginPage />
         </Route>
 
         <PrivateRoute path="/motoristaList">
@@ -28,9 +27,17 @@ function App() {
         <Route>
           404
         </Route>
-      </Switch>
+      </Routes>
     </BrowserRouter>
   );
+}
+
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route {...rest}>
+      { children }
+    </Route>
+  )
 }
 
 export default App;
