@@ -14,6 +14,11 @@ export async function removeMotorista(id) {
     return response;
 }
 
+export async function addMotorista(data) {
+    const response = await api.post("/motoristas", data);
+    return response;
+}
+
 export async function getVeiculos() {
     const response = await api.get("/veiculos")
     return response;

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import LoginPage from './pages/LoginPage';
 import { AuthContext } from './context/authContext';
 import MotoristaListPage from './pages/MotoristaListPage';
+import MotoristaAddPage from './pages/MotoristaAddPage';
 import VeiculoListPage from './pages/VeiculoListPage';
 import VeiculoAddPage from './pages/VeiculoAddPage';
 
@@ -27,6 +28,7 @@ function App() {
         } path="/motorista/list" />
         <Route element={
           <CustomRoute>
+             <MotoristaAddPage />
           </CustomRoute>
         } path="/motorista/add" />
         <Route element={

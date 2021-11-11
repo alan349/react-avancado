@@ -33,6 +33,7 @@ export default function UpdateVeiculoButton(props) {
                     }
                     return row;
                 }));
+                alert('Veiculo alterado com sucesso!');
                 setIsDialogOpen(false);
             }
         },
