@@ -14,7 +14,7 @@ export default function MotoristaListPage() {
     const columns = [
         { field: "_id", headerName: "ID", width: 300 },
         { field: "nome", headerName: "Nome Motorista", width: 300 },
-        { field: "edit", headerName: "", width: 25, renderCell: UpdateVeiculoButton }
+        { field: "edit", headerName: "Alterar", width: 25, renderCell: UpdateVeiculoButton }
     ];
 
     useEffect(() => {

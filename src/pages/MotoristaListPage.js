@@ -3,7 +3,7 @@ import { Typography, Box, Button, Container } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
 import Header from '../components/Header';
-import { getMotoristas } from '../services/contentApi';
+import { getMotoristas, removeMotorista } from '../services/contentApi';
 
 export default function MotoristaListPage() {
 
@@ -31,7 +31,11 @@ export default function MotoristaListPage() {
     }
 
     function handleClickDelete() {
-
+        rowsSelected.forEach((rowId) => {
+            removeMotorista(rowId).then(() => {
+                setRows((rows) => rows.filter((row) => row.id !== rowId));
+            });
+        })
     }
 
     return (

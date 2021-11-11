@@ -9,6 +9,11 @@ export async function getMotoristas() {
     return response;
 }
 
+export async function removeMotorista(id) {
+    const response = await api.delete(`/motoristas/${id}`);
+    return response;
+}
+
 export async function getVeiculos() {
     const response = await api.get("/veiculos")
     return response;
