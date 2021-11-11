@@ -31,11 +31,11 @@ export default function MotoristaListPage() {
 
     function handleClickDelete() {
         rowsSelected.forEach((rowId) => {
-          removeVeiculo(rowId).then(() => {
-            setRows((rows) => rows.filter((row) => row.id !== rowId));
-          });
+            removeVeiculo(rowId).then(() => {
+                setRows((rows) => rows.filter((row) => row.id !== rowId));
+            });
         })
-      }
+    }
 
     return (
         <div>

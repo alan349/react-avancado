@@ -14,7 +14,14 @@ export async function getVeiculos() {
     return response;
 }
 
+
 export async function removeVeiculo(id) {
     const response = await api.delete(`/veiculos/${id}`);
     return response;
 }
+
+export default async function addVeiculo(data) {
+    const response = await api.post("/veiculos", data);
+    return response;
+  }
+  

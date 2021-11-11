@@ -14,7 +14,7 @@ export default function LoginPage() {
         if(context.isAuthenticated){
             navigate("/")
         }
-    }, [context.isAuthenticated])
+    }, [context.isAuthenticated, navigate])
 
     async function handleSubmit(event) {
         event.preventDefault();

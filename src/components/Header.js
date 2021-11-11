@@ -10,12 +10,20 @@ export default function Header() {
     const context = useContext(AuthContext);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl2, setAnchorEl2] = React.useState(null);
     const open = Boolean(anchorEl);
+    const open2 = Boolean(anchorEl2);
     const handleClickMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleCloseMenu = () => {
         setAnchorEl(null);
+    };
+    const handleClickMenu2 = (event) => {
+        setAnchorEl2(event.currentTarget);
+    };
+    const handleCloseMenu2 = () => {
+        setAnchorEl2(null);
     };
 
     function handleClickLogout(event) {
@@ -56,17 +64,17 @@ export default function Header() {
                             <Button id="veiculo-button"
                                 aria-controls="veiculo-menu"
                                 aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClickMenu}
+                                aria-expanded={open2 ? 'true' : undefined}
+                                onClick={handleClickMenu2}
                                 color="inherit"
                             >
                                 Veículos
                             </Button>
                             <Menu
                                 id="veiculo-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleCloseMenu}
+                                anchorEl={anchorEl2}
+                                open={open2}
+                                onClose={handleCloseMenu2}
                                 MenuListProps={{
                                     'aria-labelledby': 'veiculo-button',
                                 }}

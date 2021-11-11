@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import { AuthContext } from './context/authContext';
 import MotoristaListPage from './pages/MotoristaListPage';
 import VeiculoListPage from './pages/VeiculoListPage';
+import VeiculoAddPage from './pages/VeiculoAddPage';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         } path="/veiculo/list" />
         <Route element={
           <CustomRoute>
+            <VeiculoAddPage />
           </CustomRoute>
         } path="/veiculo/add" />
         <Route element={
