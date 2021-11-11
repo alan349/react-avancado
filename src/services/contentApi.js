@@ -8,3 +8,8 @@ export async function getMotoristas() {
   const response = await api.get("/motoristas")
   return response;
 }
+
+export async function getVeiculos() {
+  const response = await api.get("/veiculos")
+  return response;
+}
