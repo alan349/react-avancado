@@ -40,27 +40,6 @@ export default function Header() {
                             Projeto Final React Avançado
                         </Typography>
                         <Box sx={{ flexGrow: 1 }}>
-                            <Button id="motorista-button"
-                                aria-controls="motorista-menu"
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClickMenu}
-                                color="inherit"
-                            >
-                                Motoristas
-                            </Button>
-                            <Menu
-                                id="motorista-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleCloseMenu}
-                                MenuListProps={{
-                                    'aria-labelledby': 'motorista-button',
-                                }}
-                            >
-                                <MenuItem component={Link} to="/motorista/list">Listar</MenuItem>
-                                <MenuItem component={Link} to="/motorista/add">Cadastrar</MenuItem>
-                            </Menu>
                             <Button id="veiculo-button"
                                 aria-controls="veiculo-menu"
                                 aria-haspopup="true"
@@ -81,6 +60,27 @@ export default function Header() {
                             >
                                 <MenuItem component={Link} to="/veiculo/list">Listar</MenuItem>
                                 <MenuItem component={Link} to="/veiculo/add">Cadastrar</MenuItem>
+                            </Menu>
+                            <Button id="motorista-button"
+                                aria-controls="motorista-menu"
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClickMenu}
+                                color="inherit"
+                            >
+                                Motoristas
+                            </Button>
+                            <Menu
+                                id="motorista-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleCloseMenu}
+                                MenuListProps={{
+                                    'aria-labelledby': 'motorista-button',
+                                }}
+                            >
+                                <MenuItem component={Link} to="/motorista/list">Listar</MenuItem>
+                                <MenuItem component={Link} to="/motorista/add">Cadastrar</MenuItem>
                             </Menu>
                         </Box>
                         <IconButton onClick={handleClickLogout} sx={{ color: "white" }}>

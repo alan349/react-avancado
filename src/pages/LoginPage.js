@@ -19,7 +19,9 @@ export default function LoginPage() {
     async function handleSubmit(event) {
         event.preventDefault();
         if (await context.login(fields.login, fields.password)) {
-            navigate("/motorista/list");
+            navigate("/veiculo/list");
+        } else {
+            alert("Login inválido!")
         }
     }
 

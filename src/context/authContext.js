@@ -27,12 +27,16 @@ function AuthProvider(props) {
   }, [token])
 
   async function login(login, password) {
-    const response = await authenticate(login, password);
-    if (response.status === 200 && response.data.token) {
-      setToken(response.data.token);
-      return true;
+    try {
+      const response = await authenticate(login, password);
+      if (response.status === 200 && response.data.token) {
+        setToken(response.data.token);
+        return true;
+      }
+    } catch (e) {
+      return false;
     }
-    return false;
+
   }
 
   async function logout() {

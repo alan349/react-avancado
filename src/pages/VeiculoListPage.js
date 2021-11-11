@@ -9,12 +9,13 @@ import UpdateVeiculoButton from '../components/UpdateVeiculoButton';
 export default function MotoristaListPage() {
 
     const [rows, setRows] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [rowsSelected, setRowsSelected] = useState([]);
 
     const columns = [
         { field: "_id", headerName: "ID", width: 300 },
         { field: "nome", headerName: "Nome Motorista", width: 300 },
-        { field: "edit", headerName: "Alterar", width: 25, renderCell: UpdateVeiculoButton }
+        { field: "edit", headerName: "", width: 25, renderCell: UpdateVeiculoButton }
     ];
 
     useEffect(() => {
@@ -28,6 +29,7 @@ export default function MotoristaListPage() {
             veiculo.setRows = setRows;
             return veiculo;
         })
+        setLoading(false);
         setRows(data)
     }
 
@@ -48,7 +50,7 @@ export default function MotoristaListPage() {
                         Veículos
                     </Typography>
                     <div style={{ height: 400, width: '100%', marginTop: "15px" }}>
-                        <DataGrid rows={rows} columns={columns}
+                        <DataGrid rows={rows} columns={columns} loading={loading}
                             checkboxSelection
                             onSelectionModelChange={(newSelectionModel) => {
                                 setRowsSelected(newSelectionModel);

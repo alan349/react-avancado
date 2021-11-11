@@ -3,30 +3,39 @@ import { Typography, Box, Button, Container } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
 import Header from '../components/Header';
-import { getMotoristas, removeMotorista } from '../services/contentApi';
+import { getMotoristas, removeMotorista, getMotoristaVeiculo } from '../services/contentApi';
 
 export default function MotoristaListPage() {
 
     const [rows, setRows] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [rowsSelected, setRowsSelected] = useState([]);
 
     const columns = [
         { field: "_id", headerName: "ID", width: 300 },
         { field: "nome", headerName: "Nome Motorista", width: 300 },
-        { field: "_idVeiculo", headerName: "ID Veiculo", width: 300 },
+        // { field: "_idVeiculo", headerName: "ID Veiculo", width: 300 },
+        { field: "veiculo", headerName: "Veiculo", width: 300 },
     ];
 
     useEffect(() => {
         getMotoristasFromApi();
     }, [])
 
+    async function getMotoristaVeiculoFromApi(_id, _idVeiculo) {
+        const motoristaVeiculo = await getMotoristaVeiculo({ "_id": _id, "_idVeiculo": _idVeiculo });
+        return motoristaVeiculo.data.veiculo.nome;
+    }
+
     async function getMotoristasFromApi() {
         const response = await getMotoristas();
-        const data = response.data.map((movie) => {
-            movie.id = movie._id;
-            movie.setRows = setRows;
-            return movie;
-        })
+        const data = await Promise.all(response.data.map(async(motorista) => {
+            motorista.id = motorista._id;
+            motorista.setRows = setRows;
+            motorista.veiculo = await getMotoristaVeiculoFromApi(motorista._id, motorista._idVeiculo);
+            return motorista;
+        }))
+        setLoading(false);
         setRows(data)
     }
 
@@ -47,7 +56,7 @@ export default function MotoristaListPage() {
                         Motoristas
                     </Typography>
                     <div style={{ height: 400, width: '100%', marginTop: "15px" }}>
-                        <DataGrid rows={rows} columns={columns}
+                        <DataGrid rows={rows} columns={columns} loading={loading}
                             checkboxSelection
                             onSelectionModelChange={(newSelectionModel) => {
                                 setRowsSelected(newSelectionModel);

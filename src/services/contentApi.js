@@ -19,6 +19,11 @@ export async function addMotorista(data) {
     return response;
 }
 
+export async function getMotoristaVeiculo(data) {
+    const response = await api.post("/motorista-veiculo", data)
+    return response;
+}
+
 export async function getVeiculos() {
     const response = await api.get("/veiculos")
     return response;

@@ -18,30 +18,22 @@ function App() {
 
         <Route element={
           <CustomRoute>
-            <MotoristaListPage />
+            <VeiculoListPage />
           </CustomRoute>
         } path="/" />
         <Route element={
           <CustomRoute>
-            <Navigate to="/" />
+            <MotoristaListPage />
           </CustomRoute>
         } path="/motorista/list" />
         <Route element={
           <CustomRoute>
-             <MotoristaAddPage />
+            <MotoristaAddPage />
           </CustomRoute>
         } path="/motorista/add" />
         <Route element={
           <CustomRoute>
-          </CustomRoute>
-        } path="/motorista/update/:id" />
-        <Route element={
-          <CustomRoute>
-          </CustomRoute>
-        } path="/motorista/veiculo/:id" />
-        <Route element={
-          <CustomRoute>
-            <VeiculoListPage />
+            <Navigate to="/" />
           </CustomRoute>
         } path="/veiculo/list" />
         <Route element={
@@ -49,10 +41,6 @@ function App() {
             <VeiculoAddPage />
           </CustomRoute>
         } path="/veiculo/add" />
-        <Route element={
-          <CustomRoute>
-          </CustomRoute>
-        } path="/veiculo/update/:id" />
 
         <Route path="/*" element={"404"} />
       </Routes>
