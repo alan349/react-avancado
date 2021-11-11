@@ -1,41 +1,49 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import LoginPage from './pages/LoginPage';
+import { AuthContext } from './context/authContext';
 
 function App() {
+
+
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route element={
+          <CustomRoute isLogin="true">
+            <LoginPage />
+          </CustomRoute>
+        } path="/" />
 
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/motoristaList" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/motoristaAdd" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/motoristaUpdate/:id" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/motoristaVeiculos/:id" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/veiculoList" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/veiculoAdd" />
         <Route element={
-          <PrivateRoute>
-          </PrivateRoute>
+          <CustomRoute>
+          </CustomRoute>
         } path="/veiculoUpdate/:id" />
 
         <Route path="/*" element={"404"} />
@@ -44,8 +52,12 @@ function App() {
   );
 }
 
-function PrivateRoute({ children }) {
-  return true;
+function CustomRoute({ children, isLogin }) {
+  const context = useContext(AuthContext);
+  if (isLogin) {
+    return !context.isAuthenticated ? children : <Navigate to="/motoristaList" />
+  }
+  return context.isAuthenticated ? children : <Navigate to="/" />
 }
 
 export default App;
