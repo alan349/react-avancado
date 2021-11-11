@@ -3,11 +3,9 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import LoginPage from './pages/LoginPage';
 import { AuthContext } from './context/authContext';
+import MotoristaListPage from './pages/MotoristaListPage';
 
 function App() {
-
-
-
   return (
     <BrowserRouter>
       <Routes>
@@ -19,6 +17,7 @@ function App() {
 
         <Route element={
           <CustomRoute>
+            <MotoristaListPage />
           </CustomRoute>
         } path="/motoristaList" />
         <Route element={
