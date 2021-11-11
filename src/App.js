@@ -11,41 +11,44 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={
-          <CustomRoute isLogin="true">
-            <LoginPage />
-          </CustomRoute>
-        } path="/" />
+          <LoginPage />
+        } path="/login" />
 
         <Route element={
           <CustomRoute>
             <MotoristaListPage />
           </CustomRoute>
-        } path="/motoristaList" />
+        } path="/" />
+        <Route element={
+          <CustomRoute>
+            <Navigate to="/" />
+          </CustomRoute>
+        } path="/motorista/list" />
         <Route element={
           <CustomRoute>
           </CustomRoute>
-        } path="/motoristaAdd" />
+        } path="/motorista/add" />
         <Route element={
           <CustomRoute>
           </CustomRoute>
-        } path="/motoristaUpdate/:id" />
+        } path="/motorista/update/:id" />
         <Route element={
           <CustomRoute>
           </CustomRoute>
-        } path="/motoristaVeiculos/:id" />
+        } path="/motorista/veiculo/:id" />
         <Route element={
           <CustomRoute>
             <VeiculoListPage />
           </CustomRoute>
-        } path="/veiculoList" />
+        } path="/veiculo/list" />
         <Route element={
           <CustomRoute>
           </CustomRoute>
-        } path="/veiculoAdd" />
+        } path="/veiculo/add" />
         <Route element={
           <CustomRoute>
           </CustomRoute>
-        } path="/veiculoUpdate/:id" />
+        } path="/veiculo/update/:id" />
 
         <Route path="/*" element={"404"} />
       </Routes>
@@ -53,12 +56,9 @@ function App() {
   );
 }
 
-function CustomRoute({ children, isLogin }) {
+function CustomRoute({ children }) {
   const context = useContext(AuthContext);
-  if (isLogin) {
-    return !context.isAuthenticated ? children : <Navigate to="/motoristaList" />
-  }
-  return context.isAuthenticated ? children : <Navigate to="/" />
+  return context.isAuthenticated ? children : <Navigate to="/login" />
 }
 
 export default App;

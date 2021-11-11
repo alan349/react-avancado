@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Container, TextField, Typography, Box, Alert } from "@mui/material";
 
 import { useNavigate } from 'react-router';
@@ -9,11 +9,17 @@ export default function LoginPage() {
     const [fields, setFields] = useState({ login: "", password: "" });
     const context = useContext(AuthContext);
     const navigate = useNavigate();
+    
+    useEffect(() =>{
+        if(context.isAuthenticated){
+            navigate("/")
+        }
+    }, [context.isAuthenticated])
 
     async function handleSubmit(event) {
         event.preventDefault();
         if (await context.login(fields.login, fields.password)) {
-            navigate("/motoristaList");
+            navigate("/motorista/list");
         }
     }
 

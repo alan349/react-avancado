@@ -50,8 +50,8 @@ export default function Header() {
                                     'aria-labelledby': 'motorista-button',
                                 }}
                             >
-                                <MenuItem component={Link} to="/motoristaList">Listar</MenuItem>
-                                <MenuItem component={Link} to="/motoristaAdd">Cadastrar</MenuItem>
+                                <MenuItem component={Link} to="/motorista/list">Listar</MenuItem>
+                                <MenuItem component={Link} to="/motorista/add">Cadastrar</MenuItem>
                             </Menu>
                             <Button id="veiculo-button"
                                 aria-controls="veiculo-menu"
@@ -71,8 +71,8 @@ export default function Header() {
                                     'aria-labelledby': 'veiculo-button',
                                 }}
                             >
-                                <MenuItem component={Link} to="/veiculoList">Listar</MenuItem>
-                                <MenuItem component={Link} to="/veiculoAdd">Cadastrar</MenuItem>
+                                <MenuItem component={Link} to="/veiculo/list">Listar</MenuItem>
+                                <MenuItem component={Link} to="/veiculo/add">Cadastrar</MenuItem>
                             </Menu>
                         </Box>
                         <IconButton onClick={handleClickLogout} sx={{ color: "white" }}>
