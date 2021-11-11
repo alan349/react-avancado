@@ -3,7 +3,7 @@ import { Box, Typography, TextField, Grid, Button, Container } from '@mui/materi
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { addVeiculo } from '../services/contentApi';
+import addVeiculo from '../services/contentApi';
 import Header from '../components/Header';
 
 const validationSchema = yup.object({
@@ -13,17 +13,22 @@ const validationSchema = yup.object({
         .required("Obrigatório"),
 });
 
+async function getVeiculoName() {
+    const veiculo = await getVeiculoById(id);
+    return veiculo.data.nome;
+  }
+
 export default function VeiculoAddPage() {
     const formik = useFormik({
         initialValues: {
-            nome: "",
+            getVeiculoName()
         },
         validationSchema: validationSchema,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values, {resetForm}) => {
             const response = await addVeiculo(values);
             if (response.status === 200) {
                 alert('Veiculo cadastrado com sucesso!');
-                resetForm({ nome: "" })
+                resetForm({nome: ""})
             }
         },
     });

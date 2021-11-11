@@ -4,6 +4,7 @@ import { DataGrid } from '@mui/x-data-grid'
 
 import Header from '../components/Header';
 import { getVeiculos, removeVeiculo } from '../services/contentApi';
+import UpdateVeiculoButton from '../components/UpdateVeiculoButton';
 
 export default function MotoristaListPage() {
 
@@ -13,6 +14,7 @@ export default function MotoristaListPage() {
     const columns = [
         { field: "_id", headerName: "ID", width: 300 },
         { field: "nome", headerName: "Nome Motorista", width: 300 },
+        { field: "edit", headerName: "", width: 25, renderCell: UpdateVeiculoButton }
     ];
 
     useEffect(() => {
@@ -21,10 +23,10 @@ export default function MotoristaListPage() {
 
     async function getVeiculosFromApi() {
         const response = await getVeiculos();
-        const data = response.data.map((movie) => {
-            movie.id = movie._id;
-            movie.setRows = setRows;
-            return movie;
+        const data = response.data.map((veiculo) => {
+            veiculo.id = veiculo._id;
+            veiculo.setRows = setRows;
+            return veiculo;
         })
         setRows(data)
     }
